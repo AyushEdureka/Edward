@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //
+        function loadMovie(movieName){
+            return new Promise((resolve)=>{
+                console.log(`Loading ${movieName}...`)
+
+                setTimeout(()=>{
+                        resolve(`${movieName} is ready to watch...`)
+                },2000)
+            })
+        }
+
+        //Async
+
+        async function watchMovie(){
+            console.log("Getting ready to watach movie")
+
+            //wait for movie to load
+           let moviemwssage     =   await loadMovie("Avengers:Endgame")
+
+           console.log(moviemwssage)
+
+           console.log("Enjoy the movie")
+        }
+        watchMovie()
+
+        console.log("I will check out reviews")
+
+
+        </script>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //asynce- function is used to fetch any data from api
+        //await it is used as waiting period to fetch the data 
+        //fetch- it used to fetch the data from API
+
+        async function fetchDATA() {
+            
+                const data = await fetch('http://randomuser.me/api')
+                
+                //rule to fetch data from json
+                const json = await data.json()
+                console.log(json)
+               
+        }
+        fetchDATA()
+    </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function getMovie(movieName) {
+            
+         let url = `https://www.omdbapi.com/?t=${movieName}&apikey=a6606658`;
+
+         try{
+             
+            let resposne = await fetch(url)
+            let data = await resposne.json()
+
+            if(data.Response == "True"){
+                console.log(data)
+                 console.log(`Title of : ${data.Title}`)
+                  console.log(`Year of : ${data.Year}`)
+                   console.log(`Plot of : ${data.Plot}`)
+                   console.log(`Plot of : ${data.Poster}`)
+
+            }else{
+                console.log("Movie Not found")
+
+            }
+
+
+         }catch(error){
+            console.log("Error fetching moview",error)
+
+           
+         }
+
+
+
+        }
+        getMovie("Avengers")
+    </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        .movie{
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 500px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        img{
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Details</h1>
+    <div class="movie" id="movieConatiner">
+
+    </div>
+
+
+     <script>
+        async function getMovie(movieName) {
+            
+         let url = `https://www.omdbapi.com/?t=${movieName}&apikey=a6606658`;
+
+         try{
+             
+            let resposne = await fetch(url)
+            let data = await resposne.json()
+
+            if(data.Response == "True"){
+             const movieConatiner  =   document.getElementById("movieConatiner")
+             movieConatiner.innerHTML = `
+             <h2>${data.Title}</h2>
+             <p><strong>Year: ${data.Year}</strong></p>
+             <p><strong>Plot: ${data.Plot}</strong></p>
+             <img src=${data.Poster}>
+             `;
+
+            }else{
+                console.log("Movie Not found")
+
+            }
+
+
+         }catch(error){
+            document.getElementById("movieConatiner").innerHTML = `<p>Error fetching movie ${error}</p>`
+
+           
+         }
+
+
+
+        }
+        getMovie("Avengers")
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        .movie{
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background: #f9f9f9;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+        }
+
+     .movie  img{
+        width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Details</h1>
+    <input type="text" id="movieInput" placeholder="enter mmovie" />
+    <button onclick="handleSearch()">Search</button>
+    <div id="movieConatiner">
+
+    </div>
+
+
+     <script>
+        async function searchMovie(movieName) {
+            
+         let url = `https://www.omdbapi.com/?s=${movieName}&apikey=a6606658`;
+
+         
+             try{
+            const response = await fetch(url)
+            const data = await response.json()
+
+             const movieConatiner = document.getElementById("movieConatiner")
+             movieConatiner.innerHTML = ""
+
+             if(data.Response === "True"){
+                data.Search.forEach(movie =>{
+                    movieConatiner.innerHTML += `
+                    <div class="movie">
+                      <img src=${movie.Poster !== "N/A" ? movie.Poster: "https://via.placeholder.com/100"}>
+                      <div>
+                        <h3>${movie.Title}</h3>
+                        <p>${movie.Year}</p>
+                     </div>   
+                    `
+                })
+             }else{
+                movieConatiner.innerHTML = "<p>No moview found</p>"
+             }
+
+                 
+             }catch(error){
+                    console.log(error)
+             }
+           
+        }
+
+        function handleSearch(){
+          const moviewName =  document.getElementById("movieInput").value
+          if(moviewName){
+            searchMovie(moviewName)
+          }
+        }
+        
+    </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //fetch("API ADDRESS"): fetch data from api
+        
+        // fetch("http://randomuser.me/api")
+
+        // .then(response=>response.json())
+        // .then(data=> console.log(data.results))
+        // .catch(error=>console.log("Error:" ,error))
+
+
+
+        fetch("https://api.dictionaryapi.dev/api/v2/entries/en/hello")
+
+        .then(response=>response.json())
+        .then(data=> console.log(data[0].meanings[0].definitions[0].definition))
+        .catch(error=>console.log("Error:" ,error))
+    </script>
+</body>
+</html>

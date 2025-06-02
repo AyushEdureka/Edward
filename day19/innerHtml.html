@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="MyH">Hello Edward</h1>
+ 
+    <button onclick="myFun()">Update</button>
+
+    <script>
+        //innerHtml- Change or update the content of any HTML ELEMENT/TAG Directly through js
+
+        function myFun(){
+
+            var xyz = "Hii EDWARD HOW ARE YOU?"
+
+            //selecting the tag 
+
+            const ele = document.getElementById("MyH");  //selected H1 TAG
+
+            //innerHtML- CHNAGE OR UPDATE
+            ele.innerHTML = xyz;
+
+
+        }
+
+    </script>
+</body>
+</html>

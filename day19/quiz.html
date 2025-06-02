@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //step 1: Quize Question
+
+        let questions = [
+            {
+                question:"What is full form of HTML?",
+                option: ["A) Hypertext markup lang;" , "B)hello text markup" ,"C)antthing"],
+                correct:"A"
+            },
+             {
+                question:"Which symbol is used  for single-line comment in JSL?",
+                option: ["A) //;" , "B)/* */" ,"C)#"],
+                correct:"A"
+            },
+             {
+                question:"What is does DOM stand",
+                option: ["A) Document object model;" , "B)Data object model" ,"C)Digital object model"],
+                correct:"A"
+            }
+        ];
+
+        //step 2:
+        let score=0;
+
+        //Loop through
+        for(let i=0; i < questions.length; i++){
+
+            //Display question and option
+            let userAnswer = prompt(
+                "Q" + (i+1) + ": " + questions[i].question + "\n" +
+                questions[i].option[0] + "\n" +
+                questions[i].option[1] + "\n" +
+                questions[i].option[2] + "\n" +
+                "Enter A,B,C"
+
+            );
+
+            //step 4: check Answer
+              if(userAnswer !== null && userAnswer.toUpperCase() === questions[i].correct ){
+                console.log("Correct ! \n");
+                score+=10;
+              }else{
+                console.log("Wrong Correct answer is :" + questions[i].correct + "\n")
+              }
+        }
+
+
+        //step 5 : final score
+        console.log("Quiz over Your Final score :" + score)
+
+        //step 6: feedback
+        if(score === 30){
+            console.log("Great Job")
+        }else if(score>=10){
+            console.log("Good job")
+        }else{
+            console.log("try agian")
+        }
+    </script>
+</body>
+</html>

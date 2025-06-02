@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDIv">
+        <h1>Welcome!</h1>
+    </div>
+
+    <script>
+        //1. Create a new paragph element/tag 
+       let newPara  =  document.createElement("p")
+
+       //Step 2: Add text inside paragapgh
+       newPara.textContent = "This is a new Paragraph"
+
+       //step 3: Find/select the div
+        let div  = document.getElementById("myDIv")
+
+        //step 4: Append(add)
+        div.appendChild(newPara)
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Bankacc{
+
+         constructor(accno,name,balance){
+            this.accno = accno
+            this.name=name
+            this.balance=balance
+         }
+
+         //method
+         deposit(accno,amount){
+            //100 = 100 + 50 = 150
+            this.balance+=amount;
+            console.log(`Hii ${this.name} , ${amount} has been deposited in your acc`)
+         }
+
+         accbalance(){
+            console.log(`${this.name} Accound balance is ${this.balance}`)
+         }
+
+         withdraw(accno,amount){
+            // $50
+            if(this.balance>=amount){
+                this.balance-=amount;
+                console.log(`Hii ${this.name} , ${amount} has been withdrawl in your acc`)
+            }else{
+                console.log('Not enough balance')
+            }
+         }
+
+
+       }
+
+
+       //Object
+       let acc1 = new Bankacc(123,'Edward',0)
+      
+       acc1.deposit(123,1000)
+       acc1.withdraw(123,100)
+        acc1.accbalance()
+
+       let acc2 = new Bankacc(111,'Ayush',100)
+
+        </script>
+</body>
+</html>

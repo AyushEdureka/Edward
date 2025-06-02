@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{text-align: center; font-family: Arial, Helvetica, sans-serif;}
+        #status{ font-size: 20px; margin-top: 20px; font-weight: bold;}
+        #orderBtn{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Online Food Order Tracker</h1>
+    <button id="orderBtn">Place order</button>
+    <p id="status">Waiting for order...</p>
+
+    <script>
+        //Callback
+        function placeOrder(callback){
+            setTimeout(()=>{
+               callback("Order placed! Preparing the food")
+            },2000)
+        }
+
+
+        function prepareOrder(callback){
+            setTimeout(()=>{
+               callback("Food is being prepared")
+            },3000)
+        }
+
+
+        
+        function OutforDelivery(callback){
+            setTimeout(()=>{
+               callback("Out for delivery")
+            },4000)
+        }
+
+        
+        function Orderdelivered(callback){
+            setTimeout(()=>{
+               callback("Order delivered")
+            },3000)
+        }
+
+        document.getElementById("orderBtn").addEventListener("click",function(){
+            let statusText = document.getElementById("status")
+
+            placeOrder(function(status){
+                statusText.innerText = status
+                prepareOrder(function(status){
+                   statusText.innerText = status;
+                   OutforDelivery(function(status){
+                     statusText.innerText = status;
+                     Orderdelivered(function(status){
+                        statusText.innerText = status;
+                     })
+                   }) 
+                })
+            })
+        })
+    </script>
+</body>
+</html>

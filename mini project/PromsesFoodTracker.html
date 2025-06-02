@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{text-align: center; font-family: Arial, Helvetica, sans-serif;}
+        #status{ font-size: 20px; margin-top: 20px; font-weight: bold;}
+        #orderBtn{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .progress-conatiner{ width: 50%;background-color: #ddd;margin: 20px auto; border-radius: 10px; }
+
+        .progress-bar {width: 0%;  height: 30px; background-color: #4CAF50; border-radius: 10px; text-align: center; color: white; line-height: 30px;}
+    </style>
+</head>
+<body>
+    <h1>Online food order tracker</h1>
+    <button id="orderBtn">Place order</button>
+    <p id="status"></p>
+
+    <!-- Progess bar -->
+     <div class="progress-conatiner">
+        <div class="progress-bar" id="progress">0%</div>
+     </div>
+
+     <script>
+        function updateProgress(percent){
+            let progressBar =document.getElementById("progress")
+            progressBar.style.width = percent + "%"
+            progressBar.innerText = percent + "%"
+        }
+
+
+        function orderStep(statusText,time,progress){
+            return new Promise((resolve)=>{
+
+                setTimeout(()=>{
+                    document.getElementById("status").innerText = statusText
+                    updateProgress(progress)
+                    resolve()
+                },time)
+            })
+        }
+
+
+        document.getElementById("orderBtn").addEventListener("click",function(){
+            updateProgress(0);   //Reset Progress
+            document.getElementById("status").innerHTML= "Processing your order"
+
+            orderStep("Order Placed",2000,25)
+             .then(()=> orderStep("Food is being Prepapred..",3000,50))
+             .then(()=> orderStep("Out of delivery..",4000,75))
+             .then(()=> orderStep("Order Deliverd..",3000,100))
+            
+
+        })
+     </script>
+</body>
+</html>

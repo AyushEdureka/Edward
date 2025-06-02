@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //asynce- function is used to fetch any data from api
+        //await it is used as waiting period to fetch the data 
+        //fetch- it used to fetch the data from API
+
+        async function fetchDATA() {
+            
+                const data = await fetch('http://randomuser.me/api')
+                
+                //rule to fetch data from json
+                const json = await data.json()
+                console.log(json)
+               
+        }
+        fetchDATA()
+    </script>
+</body>
+</html>

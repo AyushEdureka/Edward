@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //DICE _ GUESS A LUCKY ROLL
+        //1-6
+
+    //     let luckyNum =  Math.floor(Math.random()*6)+1
+    //   //  console.log(luckyNum)
+    //   while(true){
+        
+    //     guess = prompt('Enter any Number from 1 to 6')
+
+    //     if(luckyNum == guess){
+    //         alert('You Won')
+    //     }else{
+    //         alert('Better luck next time')
+    //     }
+    //   }
+
+
+    //ONLINE FOOD DELIVERY SYSTEM:
+    
+
+    //Step 1: Define Food Items(Object)
+    let pizza = {name:"Pizza",price:200}
+    let burger = {name:"Burger",price:100}
+    let pasta = {name:"Pasta",price:150}
+
+    //step 2: Customer order
+    let cart = [pizza,burger,pasta]
+
+    //Step 3: Calculate total price
+    let totalPrice = pizza.price + burger.price + pasta.price
+
+    console.log("🛒 YOUR CART ITEM")
+    cart.forEach(function(item){
+        console.log("-" + item.name + "$" + item.price )
+    })
+
+    console.log("Total Price before discount :" + totalPrice);
+
+    //STEP 4:apply discount
+    let isPremiumUser = false;
+    let discount = 0;
+
+    if(totalPrice > 300 && isPremiumUser ){
+        discount = totalPrice * 0.2; //20%
+        console.log("Premium user discount Applied : 20%")
+    } else if(totalPrice >300){
+        discount = totalPrice * 0.1; //20%
+        console.log("Regular user discount Applied : 10%")
+    } else{
+        console.log("No dicount")
+    }
+
+    //STEP 5: FINAL PRICE AFTER DISCOUNT
+    let finalPrice = totalPrice - discount
+    console.log("Final Price to pay $ " + finalPrice )
+    </script>
+</body>
+</html>

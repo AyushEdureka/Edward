@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setTimer(callback){
+           
+            console.log("Baking Cookies in oven....");  //step 1
+
+            setTimeout(()=>{
+            console.log("Cookies are ready")//step 2
+            callback();
+            },10000)
+        }
+
+        function takeOutcookies(){
+            console.log("taking cookies out of oven")//step 3
+        }
+
+        setTimer(takeOutcookies)
+
+        console.log("Doing the other task while cookies are baking")
+    </script>
+</body>
+</html>

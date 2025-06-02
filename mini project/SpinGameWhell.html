@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right , #ff9a9e , #fad0c4);
+            color: #333;
+        }
+
+        .game-container{
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            width: 350px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1{
+            font-size: 24px;
+        }
+
+        button{
+            background: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18x;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background: #e64a19;
+        }
+
+        #result{
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Lucky Spin Game</h1>
+        <p>Click the button to spin and win exciting Prizes</p>
+        <button id="spinButton">Spin Now</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("spinButton").addEventListener("click", function(){
+         
+          let resultDiv   =  document.getElementById("result")
+          resultDiv.innerHTML = "Spinning ...."
+
+          spinWheel()
+          .then(prize=>{
+            resultDiv.innerHTML = "Good" + prize
+          })
+          .catch(error=>{
+            resultDiv.innerHTML = "Failed" + error
+          })
+          .finally(()=>{
+            resultDiv.innerHTML += "<br>Game over!";
+          });
+
+
+        })
+
+        function spinWheel(){
+            return new Promise((resolve,reject)=>{
+
+                setTimeout(()=>{
+                 let randomNum = Math.random();
+
+                 //80% - Winning : 0.8
+                 //20% - Lossing : 0.2
+
+                 if(randomNum > 0.5){
+                        let prizes = ["Gift Card","Free Pizza","Movie Ticket","Cashback"]
+                        let reward = prizes[Math.floor(Math.random() * prizes.length)]
+                        resolve("Congraluation ! you won" + reward)
+                 }else{
+                      reject("OOps YOu didnt win this time")
+                 }
+
+                },2000)
+            })
+        }
+    </script>
+</body>
+</html>

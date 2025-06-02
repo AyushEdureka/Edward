@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+      //Task to do make sandwich
+      //Scychornous-step by step
+
+      console.log("Step1: Get a bread")
+      console.log("Step2: Butter")
+      console.log("Step3: Stuffing")
+      console.log("Step4: Sandwhich")
+
+        </script>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Aynchronuse -Mutiple Task at same Time</h1>
+
+    <script>
+         function startTask(){
+            console.log("Step 1 : Boil the water suppose 5 sec")
+
+            //synatx- setTimeout(function,1000)
+
+            setTimeout(()=>{
+                console.log("Step 2 water is ready")
+            },5000)
+
+            console.log("Any other task")
+            console.log(2+2)
+         }
+         startTask()
+    </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Callback is a fucntion and it is also passed into another fucntion as parameter
+
+        function doHomewokr(subject,callback){
+                
+            console.log(`Doing a homework for ${subject}..`)
+            callback()
+        }
+
+        doHomewokr("Maths",function(){
+            console.log("Home Wokr is finished")
+        })
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function greet(name,callback){
+            console.log("Hii" + name)
+            callback()
+        }
+
+        greet("edward",function(){
+            console.log("Callback function is called")
+        })
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setTimer(callback){
+           
+            console.log("Baking Cookies in oven....");  //step 1
+
+            setTimeout(()=>{
+            console.log("Cookies are ready")//step 2
+            callback();
+            },10000)
+        }
+
+        function takeOutcookies(){
+            console.log("taking cookies out of oven")//step 3
+        }
+
+        setTimer(takeOutcookies)
+
+        console.log("Doing the other task while cookies are baking")
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        setTimeout(function(){
+            console.log("Step 1")
+            setTimeout(function(){
+                console.log("step 2")
+                setTimeout(function(){
+                    console.log("Step 3")
+                },1000)
+            },1000)
+        },1000)
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myPromise = new Promise(function(resolve,reject){
+
+            if(/*condition*/true){
+                resolve("Sucess")
+            }else{
+                reject("failure")
+            }
+        })
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function orderPizza(name){
+            return new Promise((resolve,reject)=>{
+               let pizzaReddy = true
+
+               console.log("Pizza name " + name)
+
+               setTimeout(()=>{
+               if(pizzaReddy){
+                resolve("Pizza is delivered")
+               }
+               else{
+                reject("Order Cancelled")
+               }
+                 
+               },5000)
+            })
+        }
+        orderPizza("edward")
+
+        .then(message=>{
+            console.log(message)
+        })    //resolve
+
+        .catch(error=>{
+            console.log(error)
+        })   //reject
+
+        console.log(2+2)
+
+        console.log("Waiting for pizza")
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{text-align: center; font-family: Arial, Helvetica, sans-serif;}
+        #status{ font-size: 20px; margin-top: 20px; font-weight: bold;}
+        #orderBtn{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Online Food Order Tracker</h1>
+    <button id="orderBtn">Place order</button>
+    <p id="status">Waiting for order...</p>
+
+    <script>
+        //Callback
+        function placeOrder(callback){
+            setTimeout(()=>{
+               callback("Order placed! Preparing the food")
+            },2000)
+        }
+
+
+        function prepareOrder(callback){
+            setTimeout(()=>{
+               callback("Food is being prepared")
+            },3000)
+        }
+
+
+        
+        function OutforDelivery(callback){
+            setTimeout(()=>{
+               callback("Out for delivery")
+            },4000)
+        }
+
+        
+        function Orderdelivered(callback){
+            setTimeout(()=>{
+               callback("Order delivered")
+            },3000)
+        }
+
+        document.getElementById("orderBtn").addEventListener("click",function(){
+            let statusText = document.getElementById("status")
+
+            placeOrder(function(status){
+                statusText.innerText = status
+                prepareOrder(function(status){
+                   statusText.innerText = status;
+                   OutforDelivery(function(status){
+                     statusText.innerText = status;
+                     Orderdelivered(function(status){
+                        statusText.innerText = status;
+                     })
+                   }) 
+                })
+            })
+        })
+    </script>
+</body>
+</html>

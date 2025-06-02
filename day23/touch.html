@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="circle" style="width: 50px; height: 50px; background-color: red;position: absolute; border-radius: 50%;"></div>
+
+ <script>
+   const circle  =  document.getElementById("circle")
+
+   //Events
+   circle.addEventListener("mousedown",function(event){
+           console.log("Mouse down- touch started")
+           document.addEventListener("mousemove",onMouseMove)
+   })
+
+   //function to move the mouse
+   function onMouseMove(event){
+    circle.style.left = event.pageX-25 +"px"
+    circle.style.top = event.pageY-25 + "px"
+    console.log("Mouse moving-circle")
+
+   }
+
+   document.addEventListener("mouseup",function(){
+    console.log("Mouse up it stop movinng")
+    document.removeEventListener("mousemove",onMouseMove)
+   })
+
+    </script>
+</body>
+</html>

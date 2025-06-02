@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="circle" style="width: 50px; height: 50px; background-color: red;position: absolute; border-radius: 50%;"></div>
+
+ <script>
+   const circle  =  document.getElementById("circle")
+
+   //Events
+   circle.addEventListener("mousedown",function(event){
+           console.log("Mouse down- touch started")
+           document.addEventListener("mousemove",onMouseMove)
+   })
+
+   //function to move the mouse
+   function onMouseMove(event){
+    circle.style.left = event.pageX-25 +"px"
+    circle.style.top = event.pageY-25 + "px"
+    console.log("Mouse moving-circle")
+
+   }
+
+   document.addEventListener("mouseup",function(){
+    console.log("Mouse up it stop movinng")
+    document.removeEventListener("mousemove",onMouseMove)
+   })
+
+    </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="rectangle" draggable="true" style="width: 100px; height: 50px; background-color: lightblue;
+    cursor: grab; text-align: center; line-height: 50px;">
+    Drag Me!</div>
+    
+
+    <div id="dropzone" style="width: 250px; height: 250px; border: 2px dashed gray;
+    margin-top: 20px; text-align: center; line-height: 150px;">
+    
+    Drop zone</div>
+
+
+<script>
+
+    const rectangle = document.getElementById("rectangle")
+    const dropzone = document.getElementById("dropzone")
+
+    //1 event: dargstart: Allow you to start the drag
+     // dataTransfer
+    //setData("text",which data: target): store the data
+
+    rectangle.addEventListener("dragstart",function(event){
+            console.log("Drag started")
+        event.dataTransfer.setData("text",event.target.id)
+    })
+
+    dropzone.addEventListener("dragover",function(event){
+        console.log("Draggin over the drop zone")
+        event.preventDefault(); //Allow us to drop it
+    })
+
+    dropzone.addEventListener("drop",function(){
+        console.log("Dropped")
+        const data = event.dataTransfer.getData("text")
+        const draggedElement = document.getElementById(data)
+        dropzone.appendChild(draggedElement)
+
+    })
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDIv">
+        <h1>Welcome!</h1>
+    </div>
+
+    <script>
+        //1. Create a new paragph element/tag 
+       let newPara  =  document.createElement("p")
+
+       //Step 2: Add text inside paragapgh
+       newPara.textContent = "This is a new Paragraph"
+
+       //step 3: Find/select the div
+        let div  = document.getElementById("myDIv")
+
+        //step 4: Append(add)
+        div.appendChild(newPara)
+    </script>
+</body>
+</html>

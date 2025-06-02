@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+       input,button{
+        padding: 10px;
+        font-size: 16px;
+        margin: 5px;
+       }
+
+        .movie{
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background: #f9f9f9;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+        }
+
+     .movie  img{
+        width: 100px;
+        }
+
+     .pagination{
+        margin-top: 20px;
+     }   
+
+     .pagination button{
+        margin-right: 10px;
+     }
+    </style>
+</head>
+<body>
+    <h1>Movie Details</h1>
+    <input type="text" id="movieInput" placeholder="enter mmovie" />
+    <button onclick="handleSearch()">Search</button>
+    <div id="movieConatiner">
+
+    </div>
+
+    <div class="pagination">
+        <button onclick="prevPage()">⏮ Prev</button>
+        <button onclick="nextPage()">Next ⏭</button> 
+    </div>
+
+     <script>
+         let currentPage = 1;
+         let currentSearch = "";
+
+        async function searchMovie(movieName,page=1) {
+            
+         let url = `https://www.omdbapi.com/?s=${movieName}&page=${page}&apikey=a6606658`;
+
+         
+             try{
+            const response = await fetch(url)
+            const data = await response.json()
+
+             const movieConatiner = document.getElementById("movieConatiner")
+             movieConatiner.innerHTML = ""
+
+             if(data.Response === "True"){
+                data.Search.forEach(movie =>{
+                    movieConatiner.innerHTML += `
+                    <div class="movie">
+                      <img src=${movie.Poster !== "N/A" ? movie.Poster: "https://via.placeholder.com/100"}>
+                      <div>
+                        <h3>${movie.Title}</h3>
+                        <p>Year :${movie.Year}</p>
+                     </div>   
+                    `;
+                });
+             }else{
+                movieConatiner.innerHTML = "<p>No moview found</p>"
+             }
+
+                 
+             }catch(error){
+                    console.log(error)
+             }
+           
+        }
+
+        function handleSearch(){
+          const movieName =  document.getElementById("movieInput").value
+          if(movieName){
+            currentSearch = movieName            
+            currentPage = 1;
+            searchMovie(currentSearch , currentPage);
+
+          }
+        }
+
+
+        //Pagination
+
+        function nextPage(){
+            if(currentSearch !== ""){
+                currentPage++
+                searchMovie(currentSearch,currentPage)
+            }
+        }
+        
+        function prevPage(){
+
+            if(currentSearch !== "" && currentPage > 1){
+                currentPage--;
+                searchMovie(currentSearch,currentPage)
+            }
+        }
+    </script>
+</body>
+</html>

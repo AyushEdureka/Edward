@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Aynchronuse -Mutiple Task at same Time</h1>
+
+    <script>
+         function startTask(){
+            console.log("Step 1 : Boil the water suppose 5 sec")
+
+            //synatx- setTimeout(function,1000)
+
+            setTimeout(()=>{
+                console.log("Step 2 water is ready")
+            },5000)
+
+            console.log("Any other task")
+            console.log(2+2)
+         }
+         startTask()
+    </script>
+</body>
+</html>

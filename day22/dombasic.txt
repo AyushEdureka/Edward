@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Bankacc{
+
+         constructor(accno,name,balance){
+            this.accno = accno
+            this.name=name
+            this.balance=balance
+         }
+
+         //method
+         deposit(accno,amount){
+            //100 = 100 + 50 = 150
+            this.balance+=amount;
+            console.log(`Hii ${this.name} , ${amount} has been deposited in your acc`)
+         }
+
+         accbalance(){
+            console.log(`${this.name} Accound balance is ${this.balance}`)
+         }
+
+         withdraw(accno,amount){
+            // $50
+            if(this.balance>=amount){
+                this.balance-=amount;
+                console.log(`Hii ${this.name} , ${amount} has been withdrawl in your acc`)
+            }else{
+                console.log('Not enough balance')
+            }
+         }
+
+
+       }
+
+
+       //Object
+       let acc1 = new Bankacc(123,'Edward',0)
+      
+       acc1.deposit(123,1000)
+       acc1.withdraw(123,100)
+        acc1.accbalance()
+
+       let acc2 = new Bankacc(111,'Ayush',100)
+
+        </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon shop now pat later</title>
+</head>
+<body>
+    <p id="myId">Hello Edward</p>
+
+    <div class="myclass">Class div -0</div>
+    <div class="myclass">Class div -1</div>
+
+
+    <p>Hello</p>
+    <p>Hii</p>
+
+    <div class="box">First</div>
+    <div class="box">Second</div>
+    <script>
+        //Selecting elements/tag : method
+
+        //1. select tag/element by its id
+        const ele =  document.getElementById("myId")
+        console.log(ele.textContent)
+
+        //Select the tag by its class
+        const ele1 = document.getElementsByClassName("myclass")
+        console.log(ele1[1].textContent)
+
+
+        //By their Tag Name
+         const ele2  = document.getElementsByTagName("p")
+         console.log(ele2[1].textContent)
+
+         //QuerySelector - it the follows the CSSselctor #id,.classs
+
+        // const ele3 = document.querySelector(".box")
+        // console.log(ele3)
+
+        const ele4 = document.querySelectorAll(".box")
+        console.log(ele4[1].textContent)
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <p id="text">BUY NOW OFFER ENDS IN 24 HRS!!</p>
+
+
+    <script>
+           const abc = document.getElementById("text")
+           abc.textContent = "Welcome to my website! next deal in 24 hrs";
+    </script> -->
+
+
+    <!-- <div id="anything"><p>Old COntent</p></div>
+
+    <script>
+        const ele1 = document.getElementById("anything")
+        ele1.innerHTML = "Text update with inner HTML"
+    </script> -->
+
+    <p id="myid">I am a basic paragpah</p>
+
+    <script>
+      const ele3 = document.getElementById("myid")
+        ele3.style.color="white";
+        ele3.style.backgroundColor="blue";
+    </script>
+
+</body>
+</html>

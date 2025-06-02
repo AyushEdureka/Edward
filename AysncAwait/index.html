@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //
+        function loadMovie(movieName){
+            return new Promise((resolve)=>{
+                console.log(`Loading ${movieName}...`)
+
+                setTimeout(()=>{
+                        resolve(`${movieName} is ready to watch...`)
+                },2000)
+            })
+        }
+
+        //Async
+
+        async function watchMovie(){
+            console.log("Getting ready to watach movie")
+
+            //wait for movie to load
+           let moviemwssage     =   await loadMovie("Avengers:Endgame")
+
+           console.log(moviemwssage)
+
+           console.log("Enjoy the movie")
+        }
+        watchMovie()
+
+        console.log("I will check out reviews")
+
+
+        </script>
+
+</body>
+</html>

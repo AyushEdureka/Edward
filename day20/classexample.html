@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // class - keyword book - className
+
+        class book{
+
+             constructor(title,author,yearBlished){
+                     //this - is used to get or fetch the data or value of parameter in class
+                     this.title = title;
+                     this.author =author;
+                     this.yearBlished=yearBlished;   
+
+             }
+
+             //method- similar function 
+             //task
+             getSumarry(){
+                return `${this.title} by ${this.author}, published in year :  ${this.yearBlished} `
+             }
+           
+        }
+
+        //OBJECT- it is uused to use the class method,should you always declare outside
+
+        // const,var,let variblename = new className
+
+        const book1 = new book('Harry ','abc',1990)
+
+        const book2 = new book('snow white','xyz',1995)
+
+
+        const book3 = new book('hello','pqr',2000)
+
+
+        //Object using class method
+        console.log(book1.getSumarry())
+        console.log(book2.getSumarry())
+        console.log(book3.getSumarry())
+
+
+    </script>
+</body>
+</html>

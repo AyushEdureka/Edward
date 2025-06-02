@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //fetch("API ADDRESS"): fetch data from api
+        
+        // fetch("http://randomuser.me/api")
+
+        // .then(response=>response.json())
+        // .then(data=> console.log(data.results))
+        // .catch(error=>console.log("Error:" ,error))
+
+
+
+        fetch("https://api.dictionaryapi.dev/api/v2/entries/en/hello")
+
+        .then(response=>response.json())
+        .then(data=> console.log(data[0].meanings[0].definitions[0].definition))
+        .catch(error=>console.log("Error:" ,error))
+    </script>
+</body>
+</html>

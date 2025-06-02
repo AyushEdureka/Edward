@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    
+    
+
+    //      let promise1 = Promise.reject("Task 1 fail")
+    //     let promise2 = Promise.reject("Task 2 fail")
+    //     let promise3 = Promise.resolve("Task 3 done")
+    //      let promise4 = Promise.resolve("Task 4 done")
+ 
+    //   //Promse.any : first promsise to get resolve 
+    //    Promise.any([promise1,promise2,promise3,promise4])
+
+    //    .then(result=>{
+    //     console.log(result)
+    //    })
+
+    //    .catch(error=>{
+    //     console.log(error)
+    //    })
+
+
+
+
+
+    //     let promise1 = Promise.reject("Task 1 fail")
+    //     let promise2 = Promise.reject("Task 2 fail")
+    //     let promise3 = Promise.resolve("Task 3 done")
+    //      let promise4 = Promise.resolve("Task 4 done")
+ 
+    //   //Promse.race : any promise which resolve or reject first 
+    //    Promise.race([promise1,promise2,promise3,promise4])
+
+    //    .then(result=>{
+    //     console.log(result)
+    //    })
+
+    //    .catch(error=>{
+    //     console.log(error)
+    //    })
+
+
+    //    .finally(()=>{
+    //     console.log("Task done")
+    //    })
+
+
+
+     let promise1 = Promise.reject("Task 1 fail")
+        let promise2 = Promise.reject("Task 2 fail")
+        let promise3 = Promise.resolve("Task 3 done")
+         let promise4 = Promise.resolve("Task 4 done")
+ 
+      //Promse.race : any promise which resolve or reject first 
+       Promise.allSettled([promise1,promise2,promise3,promise4])
+
+       .then(result=>{
+        console.log(result)
+       })
+
+       .catch(error=>{
+        console.log(error)
+       })
+
+
+       .finally(()=>{
+        console.log("Task done")
+       })
+    </script>
+</body>
+</html>

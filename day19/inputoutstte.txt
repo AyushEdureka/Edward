@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let movies = [
+        {name:"Avengers",price:250},   //0
+        {name:"Inception",price:300},
+        {name:"Harry Potter",price:200},  //2
+        {name:"Intersetllar",price:350},
+    ]
+    
+
+    //Step 2: DSIPLAY AVAIABLE-for loop
+    console.log("Available Movies")
+    for(let i=0; i < movies.length; i++){
+        console.log((i+1) + "." + movies[i].name + " $" + movies[i].price)
+    }
+
+    //Step 3:User Select movies 
+    let selectedMovies = [0,2]
+    console.log(movies[selectedMovies[0]].name)
+    console.log(movies[selectedMovies[1]].name)
+
+    //Step 4:
+    let totalPrice = 0
+    let index =0;
+
+    while( index < selectedMovies.length){
+        totalPrice+= movies[selectedMovies[index]].price;  //  selectedMovies[index];//  0 
+        index++;
+       
+    }
+
+    //Step 5: Aplly discount
+    let discount =0;
+    let isMember = true;
+
+    do{
+        //Excecute the task once then check the condition
+         
+        if(totalPrice>500 && isMember){
+            discount = totalPrice * 0.15;
+            console.log("Membership discount added 15%")
+        } else if(totalPrice > 500){
+            discount = totalPrice *0.10
+            console.log("Regular discount added 10%")
+
+        }else{
+            console.log("NO discount found")
+        }
+
+    }while(false)
+
+    //Step 6:
+    let finalPrice = totalPrice - discount
+    console.log("Total Price before Discount $" + totalPrice)
+    console.log("Final Price after discount $" + finalPrice) 
+
+
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="Input()">Click me</button> -->
+    <script>
+        // //Input Statment - get the data from user
+
+        // function Input(){
+        //     const userName = prompt('Enter your Name ?')
+        //     console.log(userName)
+        // }
+        //  Input()
+
+        // 2.Confirm - OK AND CANCEL
+        // if(window.confirm('Allow acces to location ?')){
+        //     alert('Thank you')
+        // }else{
+        //     document.write('Access denied')
+        // }
+
+
+        function InputOut(){
+            const Name = prompt('Enter your Name?')
+
+            //output
+            alert('Hello' + Name + 'Welcome to website')
+            document.write('Your NAme  is ' + Name)
+            console.log(Name)
+        }
+        InputOut()
+
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="MyH">Hello Edward</h1>
+ 
+    <button onclick="myFun()">Update</button>
+
+    <script>
+        //innerHtml- Change or update the content of any HTML ELEMENT/TAG Directly through js
+
+        function myFun(){
+
+            var xyz = "Hii EDWARD HOW ARE YOU?"
+
+            //selecting the tag 
+
+            const ele = document.getElementById("MyH");  //selected H1 TAG
+
+            //innerHtML- CHNAGE OR UPDATE
+            ele.innerHTML = xyz;
+
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="welcomeMessage">Welcome, Guest</h2>
+    <input type="text" id="username" placeholder="Enter your Name">
+    <button onclick="saveName()">Save Name</button>
+
+    <script>
+
+        //Set the cookie
+        function setCookie(name,value,days){
+            let date = new Date();
+
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires;
+        }
+
+        function getCookie(name){
+            let decodeCookie = decodeURIComponent(document.cookie);
+            let cookies = decodeCookie.split(';')
+            name= name + "=";
+
+            for(let i =0;i < cookies.length;i++){
+                let c = cookies[i].trim()
+                
+                if(c.indexOf(name) === 0){
+             //if("username=John.indexof("username") === 0")   
+               return c.substring(name.length , c.length)
+                }
+                
+            }
+            return "";
+        }
+
+
+        function saveName(){
+        let username =   document.getElementById("username").value
+
+        if(username){
+            setCookie("username" , username , 7);
+            displayWelcome(username)
+        }
+        }
+        
+
+        function displayWelcome(name){
+            document.getElementById("welcomeMessage").innerText = "welcome " + name + "!"
+        }
+
+        window.onload = function(){
+            let savedName = getCookie("username")
+            if(savedName){
+                displayWelcome(savedName)
+            }
+        }
+    </script>
+</body>
+</html>

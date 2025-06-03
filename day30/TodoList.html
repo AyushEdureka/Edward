@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .conatiner{
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input{
+            width: 70%;
+            padding: 8px;
+        }
+
+        button{
+            padding: 8px 12px;
+            margin-left: 10px;
+        }
+
+        li{
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="conatiner">
+        <h2>To Do list</h2>
+        <input type="text" id="taskInput" >
+        <button onclick="addTask( )">Add Task</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+      //show thw task when the page loads
+      window.onload = function(){
+        showTasks()
+      }
+  
+
+        function addTask(){
+          let task = document.getElementById("taskInput").value
+
+          if(task === ""){
+            alert("please enter the task");
+            return;
+          }
+
+         let tasks = JSON.parse(localStorage.getItem("tasks"))   ||   []
+
+         //add new task
+         tasks.push(task)
+
+         //save to LocalStorage
+         localStorage.setItem("tasks",JSON.stringify(tasks))
+
+         //CLear the input box
+         document.getElementById("taskInput").value = ""
+
+         showTasks();
+
+        }
+
+
+
+        //show the data 
+        function showTasks(){
+            let taskList = document.getElementById("taskList")
+            taskList.innerHTML = "";
+     
+            let tasks = JSON.parse(localStorage.getItem("tasks"))   ||   []
+
+            tasks.forEach((task,index)=>{
+                let li = document.createElement("li")
+                li.innerHTML = `
+                ${task}
+                `;
+                taskList.appendChild(li)
+            });
+
+        }
+    </script>
+</body>
+</html>

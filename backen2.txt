@@ -1,0 +1,62 @@
+const express = require('express'); //Import express module
+const app = express();  // Create an Express application
+
+//Define a route (URL PATH ) and reponse
+app.get('/login',(req,res)=>{
+    res.send('Fill the form to login ')
+});
+
+
+//Make the Server listen Or Start the server
+//PORT: Address of backend
+
+app.listen(3000,()=>{
+    console.log("Server is running on http://localhost:3000 ");
+});
+
+
+
+
+
+
+----------
+
+const express = require('express'); //Import express module
+const app = express();  // Create an Express application
+
+//Define a route (URL PATH ) and reponse
+app.get('/login',(req,res)=>{
+    res.send('Fill the form to login ')
+});
+
+
+//Make the Server listen Or Start the server
+//PORT: Address of backend
+
+app.listen(3000,()=>{
+    console.log("Server is running on http://localhost:3000 ");
+});
+
+
+----
+
+const http = require('http'); //Importing the http
+
+const server = http.createServer((req,res)=>{
+
+    if(req.url == '/' || req.url == '/home'){
+        res.write("<h1>It is home page</h1>")
+        res.end()
+    } else if(req.url == '/about'){
+         res.write("<h1>It is about page</h1>")
+        res.end()
+    } else{
+         res.write("<h1>404 page not found</h1>")
+        res.end()
+    }
+})
+
+server.listen(8000,()=>{
+    console.log("Server is listening at port 8000")
+})
+

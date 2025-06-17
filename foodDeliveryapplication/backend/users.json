@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Edward",
+    "email": "test@gmail.com",
+    "password": "$2b$10$GgKX0zldeREX29iexAGfBee1a2eNi/7Zr0EV.//GRMrto5nxI8hlC"
+  },
+  {
+    "name": "Addo",
+    "email": "Addo@gmail.com",
+    "password": "$2b$10$EwO0K05lLPO2xx/gIpuDpefuqP0HkYsgUp2WKD9zpec/APWAWI8Ri"
+  },
+  {
+    "name": "Addo",
+    "email": "Add0@gamil.com",
+    "password": "$2b$10$Kbnr2/Uu4cibL1n3NpJ2iuZBqvqe/FSplQtZhxZSCqoOoMiOlZ6/i"
+  },
+  {
+    "name": "Leonard",
+    "email": "Leo@gmail.com",
+    "password": "$2b$10$Utvq6hR45C5oOGOYXqLuyufreKip36Swke/XQmRa0eNaT19WVK.kK"
+  }
+]

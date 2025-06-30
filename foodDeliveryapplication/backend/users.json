@@ -18,5 +18,15 @@
     "name": "Leonard",
     "email": "Leo@gmail.com",
     "password": "$2b$10$Utvq6hR45C5oOGOYXqLuyufreKip36Swke/XQmRa0eNaT19WVK.kK"
+  },
+  {
+    "name": "Tansiha",
+    "email": "tash@gmail.com",
+    "password": "$2b$10$bFTI6/N5fMcCinozxlTef.ReCiA/hifLYNtnK.WicPIexEO85Hnxa"
+  },
+  {
+    "name": "Admin",
+    "email": "admin@foodie.com",
+    "password": "$2b$10$uGmMqyhnL5EmlKfc7l.94ed.ZT9mbOusjS5.eyMC0PUq2xVrFpHf6"
   }
 ]
